@@ -1,0 +1,33 @@
+
+
+<nav class="nav navbar-light bg-white shadow shadow-sm" [@banner]="estado" >
+  <div class="container-fluid p-0 m-0">
+    <div class="row no-gutters bg-white" [@conteudo]="stConteudo">
+      <div class="col-5 pl-2" [routerLink]="['/home']">
+        <img src="../../assets/interface/logo.png" height="38" class="m-1">
+        </div>
+      <div class="col-5  align-self-center" [routerLink]="['/homep', 'configuracao']"> 
+        <p class="p-0 m-0 text-right"><strong>Painel de controle </strong></p>
+        </div>
+      <div class="col-2 align-self-center" [routerLink]="['/homep', 'configuracao']">
+        <p class="p-0 m-0 text-center" ><i class="fa fa-cogs"></i></p>
+        </div>
+    </div>
+  </div>
+ </nav>
+ 
+<div  class=" container position: absolute;z-index: -1;">
+  <div style="height: 1px; background-color: rgb(241, 241, 241); " class="row shadow shadow-sm "></div>
+
+</div>
+
+
+<!-- Mine botão com seta pra cima e para baixo-->
+<div  [@botao]="stBotao"  class="botao shadow-sm shadow" (click)="toggleButton()">
+  <div *ngIf="ctrlBotao; else ctrlBotaofalse">
+    <p class="text-center m-0 p-0" ><strong><i class="fa fa-angle-up p-0 m-0"></i></strong></p>
+  </div>
+  <ng-template #ctrlBotaofalse>
+    <p class="text-center m-0 p-0" ><i class="fa fa-angle-down p-0 m-0"></i></p>
+  </ng-template>
+</div>

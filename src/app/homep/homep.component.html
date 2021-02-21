@@ -1,0 +1,451 @@
+
+<div class="fundo" ></div>
+<div class="pt-2 pb-5">
+
+  
+<div *ngFor="let item of itemCadastrados" class="bordalr"  ><!-- Inicio do *ngFor -->
+
+  
+  <div *ngIf="Ctrlpag == undefined || Ctrlpag == 'Lanches'">
+    <div *ngIf="item.modelo =='Lanches'"> 
+      <div [@entrada]="stEstado">
+  <div class="d-flex bordamb shadow-sm">
+    <div class="p-0 m-0" [routerLink]="['/oferta', item.key]">
+      <div class="imagem " [style.background-image]="'url(' + item.url_imagem  + ')'" ></div>
+    </div>
+    <div class="m-0 w-100 "><!-- Inicio do corpo -->
+
+      <div class="container p-0 pl-2 pt-1 m-0">
+        <div class="row no-gutters ">
+          <div class="col-9 " [routerLink]="['/oferta', item.key]" >
+           <strong  style="font-weight: 500; letter-spacing: 0.5px;">{{item.titulo}}</strong>
+          </div>
+          <div class="col-3 pr-1   ">
+                  
+
+
+          <div *ngIf="deslize == item.status ;else off" class="m-0 p-0"><p class="p-0 m-0 text-right">
+            <label class="switch p-0 m-0">
+              <input type="checkbox" checked (click)="desliza(item)">
+              <span class="slider round "></span>
+            </label>
+            </p>
+          </div>
+          <ng-template #off ><p class="p-0 m-0 text-right">
+            <label class="switch p-0 m-0">
+              <input type="checkbox" (click)="desliza(item)">
+              <span class="slider round"></span>
+            </label>
+          </p>
+          </ng-template>
+          </div>
+        </div>
+        <div class="row descricao p-0 m-0  pt-0" style="height: 36px;" [routerLink]="['/oferta', item.key]">
+          <div class="col p-0 m-0 ">
+            <p class="p-0 m-0  ">
+              <span class="p-0 m-0" style="letter-spacing: 0.5px;"> {{(item.descricao).substr(0, 70)}}</span><span *ngIf="item.descricao.length > 69">...</span>
+          </div>
+        </div>
+        <div *ngIf="item.oferta != 0; else nOferta">
+          <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+            <div class="col-4 ">
+              <span style="font-size: 17px; margin: 0px; padding: 0px;font-weight: 500;">R$:{{item.oferta.replace(".",",")}}</span>
+            </div>
+            <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+              <p class="m-0 p-0 text-center"><span style="font-size: 14px; margin: 0px; padding: 0px; text-decoration: line-through;">R$:{{item.valor.replace(".",",")}}</span></p>
+            </div>
+
+            <div class="col-4 ">
+              <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+            </div>
+          </div>
+        </div>
+        <ng-template #nOferta>
+          <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+            <div class="col-4  ">
+              <span style="font-size: 17px; margin: 0px; padding: 0px;font-weight: 500;">R$:{{item.valor.replace(".",",")}}</span>
+            </div>
+            <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+              <span style="font-size: 14px; margin: 0px; padding: 0px; text-decoration: line-through;"></span>
+            </div>
+  
+            <div class="col-4 ">
+              <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+            </div>
+          </div>
+        </ng-template>
+        </div>
+      </div>
+    </div><!-- Fim do corpo -->
+  </div>
+</div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <div *ngIf="Ctrlpag == 'Porcao' || Ctrlpag == 'Porções'">
+    <div *ngIf="item.modelo == 'Porções'">
+      <div [@entrada]="stEstado">
+    <div class="d-flex bordamb shadow-sm">
+      <div class="p-0 m-0" [routerLink]="['/oferta', item.key]">
+        <div class="imagem " [style.background-image]="'url(' + item.url_imagem  + ')'" ></div>
+      </div>
+      <div class="m-0 w-100 "><!-- Inicio do corpo -->
+  
+        <div class="container p-0 pl-2 pt-1 m-0">
+          <div class="row no-gutters ">
+            <div class="col-9" [routerLink]="['/oferta', item.key]">
+             <strong  style="font-weight: 500; letter-spacing: 0.5px;">{{item.titulo}}</strong>
+            </div>
+            <div class="col-3 pr-1 ">
+                  
+
+
+              <div *ngIf="deslize == item.status ;else off"><p class="p-0 m-0 text-right">
+                <label class="switch p-0 m-0">
+                  <input type="checkbox" checked (click)="desliza(item)">
+                  <span class="slider round"></span>
+                </label>
+                </p>
+              </div>
+              <ng-template #off><p class="p-0 m-0 text-right">
+                <label class="switch p-0 m-0">
+                  <input type="checkbox" (click)="desliza(item)">
+                  <span class="slider round"></span>
+                </label>
+              </p>
+              </ng-template>
+            </div>
+          </div>
+          <div class="row descricao p-0 m-0  pt-0" style="height: 36px;" [routerLink]="['/oferta', item.key]">
+            <div class="col p-0 m-0 ">
+              <p class="p-0 m-0  ">
+                <span class="p-0 m-0" style="letter-spacing: 0.5px;"> {{(item.descricao).substr(0, 70)}}</span><span *ngIf="item.descricao.length > 69">...</span>
+            </div>
+          </div>
+          <div *ngIf="item.oferta != 0; else nOferta">
+            <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+              <div class="col-4  ">
+                <span style="font-size: 18px; margin: 0px; padding: 0px;font-weight: 500;">{{item.oferta.replace(".",",")}}</span>
+              </div>
+              <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                <span style="font-size: 15px; margin: 0px; padding: 0px; text-decoration: line-through;">{{item.valor.replace(".",",")}}</span>
+              </div>
+  
+              <div class="col-4 ">
+                <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+              </div>
+            </div>
+          </div>
+          <ng-template #nOferta>
+            <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+              <div class="col-4  ">
+                <span style="font-size: 18px; margin: 0px; padding: 0px;font-weight: 500;">{{item.valor.replace(".",",")}}</span>
+              </div>
+              <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                <span style="font-size: 15px; margin: 0px; padding: 0px; text-decoration: line-through;"></span>
+              </div>
+    
+              <div class="col-4 ">
+                <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+              </div>
+            </div>
+          </ng-template>
+          </div>
+        </div>
+      </div><!-- Fim do corpo -->
+    </div>
+  </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div *ngIf="Ctrlpag == 'Refrigerante' || Ctrlpag == 'Bebidas' || Ctrlpag == 'Sucos' || Ctrlpag == 'Vitaminas' ">
+      <div *ngIf="item.modelo != 'Lanches' && item.modelo != 'Porções' && item.modelo != undefined">
+        <div [@entrada]="stEstado">
+      <div class="d-flex bordamb shadow-sm">
+        <div class="p-0 m-0" [routerLink]="['/oferta', item.key]">
+          <div class="imagem " [style.background-image]="'url(' + item.url_imagem  + ')'" ></div>
+        </div>
+        <div class="m-0 w-100 "><!-- Inicio do corpo -->
+    
+          <div class="container p-0 pl-2 pt-1 m-0">
+            <div class="row no-gutters ">
+              <div class="col-9" [routerLink]="['/oferta', item.key]">
+               <strong  style="font-weight: 500; letter-spacing: 0.5px;">{{item.titulo}}</strong>
+              </div>
+              <div class="col-3 pr-1 ">
+                  
+
+
+                <div *ngIf="deslize == item.status ;else off"><p class="p-0 m-0 text-right">
+                  <label class="switch p-0 m-0">
+                    <input type="checkbox" checked (click)="desliza(item)">
+                    <span class="slider round"></span>
+                  </label>
+                  </p>
+                </div>
+                <ng-template #off><p class="p-0 m-0 text-right">
+                  <label class="switch p-0 m-0">
+                    <input type="checkbox" (click)="desliza(item)">
+                    <span class="slider round"></span>
+                  </label>
+                </p>
+                </ng-template>
+              </div>
+            </div>
+            <div class="row descricao p-0 m-0  pt-0" style="height: 36px;" [routerLink]="['/oferta', item.key]">
+              <div class="col p-0 m-0 ">
+                <p class="p-0 m-0  ">
+                  <span class="p-0 m-0" style="letter-spacing: 0.5px;"> {{(item.descricao).substr(0, 70)}}</span><span *ngIf="item.descricao.length > 69">...</span>
+              </div>
+            </div>
+            <div *ngIf="item.oferta != 0; else nOferta">
+              <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+                <div class="col-4  "><span style="font-size: 16px;">R$:</span>
+                  <span style="font-size: 17px; margin: 0px; padding: 0px;font-weight: 500;">{{item.oferta.replace(".",",")}}</span>
+                </div>
+                <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                  <span style="font-size: 14px; margin: 0px; padding: 0px; text-decoration: line-through;">{{item.valor.replace(".",",")}}</span>
+                </div>
+    
+                <div class="col-4 ">
+                  <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+                </div>
+              </div>
+            </div>
+            <ng-template #nOferta>
+              <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+                <div class="col-4  ">
+                  <span style="font-size: 18px; margin: 0px; padding: 0px;font-weight: 500;">{{item.valor.replace(".",",")}}</span>
+                </div>
+                <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                  <span style="font-size: 15px; margin: 0px; padding: 0px; text-decoration: line-through;"></span>
+                </div>
+      
+                <div class="col-4 ">
+                  <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+                </div>
+              </div>
+            </ng-template>
+            </div>
+          </div>
+        </div><!-- Fim do corpo -->
+      </div>
+    </div>
+    </div>
+ </div><!-- Inicio do *ngFor -->
+
+
+
+
+
+
+ <div *ngIf="Ctrlpag == 'configuracao'">
+
+
+<!-- Modal -->
+
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="staticBackdropLabel">Painel de Configurações</h5>
+      </div>
+      <div class="modal-body" >
+
+        <div *ngIf="controlaform; else cadastraHora"><!-- cadastra -->
+          <p class="h6 text-center m-0 p-0">Horarios de funcionamento da loja</p>
+          <hr class="m-0 p-0">
+          <p class="m-0 p-0">Horario de Seg a Sex</p>
+          <div class="form-row" style="background-color:rgb(240, 240, 240) ;">
+            <div class="form-group col-6 mb-1 ">
+              Abre:
+              <div class="input-group input-group-sm m-0">
+                <input class="form-control"
+                type="time" id="appt" name="appt"
+                min="07:00" max="22:00"
+                [value]="abertura" 
+                #selectAbertura
+               (change)="Abertura(selectAbertura.value)">
+              </div>
+            </div>
+            <div class="form-group col-6 mb-1 ">
+              Fecha:
+              <div class="input-group input-group-sm m-0">
+                <input class="form-control"
+                type="time" id="appt" name="appt"
+                min="07:00" max="22:00"
+                [value]="fechamento" 
+                #selectFechamento
+               (change)="Fechamento(selectFechamento.value)">
+              </div>
+            </div>
+          </div>
+
+          <p class="m-0 p-0">Horario de Sábado</p>
+          <div class="form-row" style="background-color:rgb(240, 240, 240) ;">
+            <div class="form-group col-6 mb-1 ">
+              Abre:
+              <div class="input-group input-group-sm m-0">
+                <input class="form-control"
+                type="time" id="appt" name="appt"
+                min="07:00" max="22:00"
+                [value]="aberturaf" 
+                #selectAberturaF
+               (change)="AberturaF(selectAberturaF.value)">
+              </div>
+            </div>
+            <div class="form-group col-6 mb-1 ">
+              Fecha:
+              <div class="input-group input-group-sm m-0">
+                <input class="form-control"
+                type="time" id="appt" name="appt"
+                min="07:00" max="22:00"
+                [value]="fechamentof" 
+                #selectFechamentoF
+               (change)="FechamentoF(selectFechamentoF.value)">
+              </div>
+            </div>
+          </div>
+
+          <p class="m-0 p-0">Horario de Domingo</p>
+          <div class="form-row" style="background-color:rgb(240, 240, 240) ;">
+            <div class="form-group col-6 mb-1 ">
+              Abre:
+              <div class="input-group input-group-sm m-0">
+                <input class="form-control"
+                type="time" id="appt" name="appt"
+                min="07:00" max="22:00"
+                [value]="aberturad" 
+                #selectAberturaD
+               (change)="AberturaD(selectAberturaD.value)">
+              </div>
+            </div>
+            <div class="form-group col-6 mb-1 ">
+              Fecha:
+              <div class="input-group input-group-sm m-0">
+                <input class="form-control"
+                type="time" id="appt" name="appt"
+                min="07:00" max="22:00"
+                [value]="fechamentod" 
+                #selectFechamentoD
+               (change)="FechamentoD(selectFechamentoD.value)">
+              </div>
+            </div>
+          </div>
+        </div><!--finaliza-->
+
+        <ng-template #cadastraHora>
+          <div *ngFor="let hr of hora"><!-- vendo banco -->
+            <p class="h6 text-center m-0 p-0">Horarios de funcionamento da loja</p>
+            <hr class="m-0 p-0">
+            <p class="m-0 p-0">Horario de Seg a Sex</p>
+            <div class="form-row" style="background-color:rgb(240, 240, 240) ;">
+              <div class="form-group col-6 mb-1 ">
+                Abre:
+                <div class="input-group input-group-sm m-0">
+                  <input class="form-control"
+                  type="time" id="appt" name="appt"
+                  min="07:00" max="22:00"
+                  [value]="hr.abre" 
+                  #selectAbertura
+                 (change)="Abertura(selectAbertura.value)">
+                </div>
+              </div>
+              <div class="form-group col-6 mb-1 ">
+                Fecha:
+                <div class="input-group input-group-sm m-0">
+                  <input class="form-control"
+                  type="time" id="appt" name="appt"
+                  min="07:00" max="22:00"
+                  [value]="hr.fechamento" 
+                  #selectFechamento
+                 (change)="Fechamento(selectFechamento.value)">
+                </div>
+              </div>
+            </div>
+  
+            <p class="m-0 p-0">Horario de Sábado</p>
+            <div class="form-row" style="background-color:rgb(240, 240, 240) ;">
+              <div class="form-group col-6 mb-1 ">
+                Abre:
+                <div class="input-group input-group-sm m-0">
+                  <input class="form-control"
+                  type="time" id="appt" name="appt"
+                  min="07:00" max="22:00"
+                  [value]="hr.abref" 
+                  #selectAberturaF
+                 (change)="AberturaF(selectAberturaF.value)">
+                </div>
+              </div>
+              <div class="form-group col-6 mb-1 ">
+                Fecha:
+                <div class="input-group input-group-sm m-0">
+                  <input class="form-control"
+                  type="time" id="appt" name="appt"
+                  min="07:00" max="22:00"
+                  [value]="hr.fechamentof" 
+                  #selectFechamentoF
+                 (change)="FechamentoF(selectFechamentoF.value)">
+                </div>
+              </div>
+            </div>
+  
+            <p class="m-0 p-0">Horario de Domingo</p>
+            <div class="form-row" style="background-color:rgb(240, 240, 240) ;">
+              <div class="form-group col-6 mb-1 ">
+                Abre:
+                <div class="input-group input-group-sm m-0">
+                  <input class="form-control"
+                  type="time" id="appt" name="appt"
+                  min="07:00" max="22:00"
+                  [value]="hr.abred" 
+                  #selectAberturaD
+                 (change)="AberturaD(selectAberturaD.value)">
+                </div>
+              </div>
+              <div class="form-group col-6 mb-1 ">
+                Fecha:
+                <div class="input-group input-group-sm m-0">
+                  <input class="form-control"
+                  type="time" id="appt" name="appt"
+                  min="07:00" max="22:00"
+                  [value]="hr.fechamentod" 
+                  #selectFechamentoD
+                 (change)="FechamentoD(selectFechamentoD.value)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="confirmaTime()">Gravar</button>
+      </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+

@@ -1,0 +1,649 @@
+
+<div class="fundo" ></div>
+<div class="pt-2 pb-5">
+
+
+  <div *ngIf=" Ctrlpag == 'inicio'">
+
+    
+
+
+    
+  
+</div>
+
+
+
+
+
+
+
+
+  <div *ngIf="Ctrlpag == undefined || Ctrlpag == 'Lanches'">
+    <div *ngFor="let item of itemCadastrados" class="bordalr"  ><!-- Inicio do *ngFor -->
+    <div *ngIf="desliza == item.status">
+    <div *ngIf="item.modelo =='Lanches'"> 
+      <div [@entrada]="stEstado">
+  <div class="d-flex bordamb shadow-sm">
+    <div class="p-0 m-0" [routerLink]="['/oferta', item.key]">
+      <div class="imagem " [style.background-image]="'url(' + item.url_imagem  + ')'" ></div>
+    </div>
+    <div class="m-0 w-100 "><!-- Inicio do corpo -->
+
+      <div class="container p-0 pl-2 pt-1 m-0">
+        <div class="row no-gutters ">
+          <div class="col-9" [routerLink]="['/oferta', item.key]">
+           <strong  style="font-weight: 500; letter-spacing: 0.5px;">{{item.titulo}}</strong>
+          </div>
+          <div class="col-3 ">
+           <p class="p-0 m-0 pr-2 text-right"> <a >
+            <div style="position: absolute; right:0; " class="pr-2" >
+                <img src="../../assets/interface/carrinhoComprabb.svg" height="20px" >
+            </div>
+            <div *ngFor="let carrinhokey of itensCarrinho" style="position: absolute;right:0; " class="pr-2"  >
+              <div *ngIf="item.key == carrinhokey.key" style="z-index: 5;"> 
+                <img src="../../assets/interface/carrinhoCompracheio.svg" height="20px" >
+              </div>
+            </div>
+
+            </a></p>
+          </div>
+        </div>
+        <div class="row descricao p-0 m-0  pt-0" style="height: 36px;" [routerLink]="['/oferta', item.key]">
+          <div class="col p-0 m-0 ">
+            <p class="p-0 m-0  ">
+              <span class="p-0 m-0" style="letter-spacing: 0.5px;"> {{(item.descricao).substr(0, 70)}}</span><span *ngIf="item.descricao.length > 69">...</span>
+          </div>
+        </div>
+        <div *ngIf="item.oferta != 0; else nOferta">
+          <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+            <div class="col-4  ">
+              <span style="font-size: 17px; margin: 0px; padding: 0px;font-weight: 500;">R$:{{item.oferta.replace(".",",")}}</span>
+            </div>
+            <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+              <p class="m-0 p-0 text-center"><span style="font-size: 14px; margin: 0px; padding: 0px; text-decoration: line-through;">R$:{{item.valor.replace(".",",")}}</span></p>
+            </div>
+
+            <div class="col-4 ">
+              <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+            </div>
+          </div>
+        </div>
+        <ng-template #nOferta>
+          <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+            <div class="col-4  ">
+              <span style="font-size: 17px; margin: 0px; padding: 0px;font-weight: 500;">R$:{{item.valor.replace(".",",")}}</span>
+            </div>
+            <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+              <span style="font-size: 14px; margin: 0px; padding: 0px; text-decoration: line-through;"></span>
+            </div>
+  
+            <div class="col-4 ">
+              <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+            </div>
+          </div>
+        </ng-template>
+        </div>
+      </div>
+    </div><!-- Fim do corpo -->
+  </div>
+</div>
+  </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  <div *ngIf="Ctrlpag == 'Porcao' || Ctrlpag == 'Porções'">
+    <div *ngFor="let item of itemCadastrados" class="bordalr"  ><!-- Inicio do *ngFor -->
+    <div *ngIf="desliza == item.status">
+    <div *ngIf="item.modelo == 'Porções'">
+      <div [@entrada]="stEstado">
+    <div class="d-flex bordamb shadow-sm">
+      <div class="p-0 m-0" [routerLink]="['/oferta', item.key]">
+        <div class="imagem " [style.background-image]="'url(' + item.url_imagem  + ')'" ></div>
+      </div>
+      <div class="m-0 w-100 "><!-- Inicio do corpo -->
+  
+        <div class="container p-0 pl-2 pt-1 m-0">
+          <div class="row no-gutters ">
+            <div class="col-9" [routerLink]="['/oferta', item.key]">
+             <strong  style="font-weight: 500; letter-spacing: 0.5px;">{{item.titulo}}</strong>
+            </div>
+            <div class="col-3 ">
+              <p class="p-0 m-0 pr-2 text-right"> <a >
+                <div style="position: absolute; right:0; " class="pr-2" >
+                    <img src="../../assets/interface/carrinhoComprabb.svg" height="20px" >
+                </div>
+                <div *ngFor="let carrinhokey of itensCarrinho" style="position: absolute;right:0; " class="pr-2"  >
+                  <div *ngIf="item.key == carrinhokey.key" style="z-index: 5;"> 
+                    <img src="../../assets/interface/carrinhoCompracheio.svg" height="20px" >
+                  </div>
+                </div>
+    
+                </a></p>
+            </div>
+          </div>
+          <div class="row descricao p-0 m-0  pt-0" style="height: 36px;" [routerLink]="['/oferta', item.key]">
+            <div class="col p-0 m-0 ">
+              <p class="p-0 m-0  ">
+                <span class="p-0 m-0" style="letter-spacing: 0.5px;"> {{(item.descricao).substr(0, 70)}}</span><span *ngIf="item.descricao.length > 69">...</span>
+            </div>
+          </div>
+          <div *ngIf="item.oferta != 0; else nOferta">
+            <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+              <div class="col-4  ">
+                <span style="font-size: 18px; margin: 0px; padding: 0px;font-weight: 500;">{{item.oferta.replace(".",",")}}</span>
+              </div>
+              <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                <span style="font-size: 15px; margin: 0px; padding: 0px; text-decoration: line-through;">{{item.valor.replace(".",",")}}</span>
+              </div>
+  
+              <div class="col-4 ">
+                <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+              </div>
+            </div>
+          </div>
+          <ng-template #nOferta>
+            <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+              <div class="col-4  ">
+                <span style="font-size: 18px; margin: 0px; padding: 0px;font-weight: 500;">{{item.valor.replace(".",",")}}</span>
+              </div>
+              <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                <span style="font-size: 15px; margin: 0px; padding: 0px; text-decoration: line-through;"></span>
+              </div>
+    
+              <div class="col-4 ">
+                <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+              </div>
+            </div>
+          </ng-template>
+          </div>
+        </div>
+      </div><!-- Fim do corpo -->
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="mb-5 pb-2"  *ngIf="Ctrlpag == 'Refrigerante' || Ctrlpag == 'Bebidas' || Ctrlpag == 'Sucos' || Ctrlpag == 'Vitaminas' ">
+   
+<!-----------------------------------------------------Refrigerante------------------------------------------------>
+      <div *ngIf="pagina == 'Refrigerante'">
+        <div *ngFor="let item of itemCadastrados" class="bordalr"  ><!-- Inicio do *ngFor  Refrigerante -->
+        <div *ngIf="desliza == item.status">
+        <div *ngIf="item.modelo == pagina">
+  
+          <div [@entrada]="stEstado">
+        <div class="d-flex bordamb shadow-sm">
+          <div class="p-0 m-0" [routerLink]="['/oferta', item.key]">
+            <div class="imagem " [style.background-image]="'url(' + item.url_imagem  + ')'" ></div>
+          </div>
+          <div class="m-0 w-100 "><!-- Inicio do corpo -->
+      
+            <div class="container p-0 pl-2 pt-1 m-0">
+              <div class="row no-gutters ">
+                <div class="col-9" [routerLink]="['/oferta', item.key]">
+                 <strong  style="font-weight: 500; letter-spacing: 0.5px;">{{item.titulo}}</strong>
+                </div>
+                <div class="col-3 ">
+                  <p class="p-0 m-0 pr-2 text-right"> <a >
+                    <div style="position: absolute; right:0; " class="pr-2" >
+                        <img src="../../assets/interface/carrinhoComprabb.svg" height="20px" >
+                    </div>
+                    <div *ngFor="let carrinhokey of itensCarrinho" style="position: absolute;right:0; " class="pr-2"  >
+                      <div *ngIf="item.key == carrinhokey.key" style="z-index: 5;"> 
+                        <img src="../../assets/interface/carrinhoCompracheio.svg" height="20px" >
+                      </div>
+                    </div>
+        
+                    </a></p>
+                </div>
+              </div>
+              <div class="row descricao p-0 m-0  pt-0" style="height: 36px;" [routerLink]="['/oferta', item.key]">
+                <div class="col p-0 m-0 ">
+                  <p class="p-0 m-0  ">
+                    <span class="p-0 m-0" style="letter-spacing: 0.5px;"> {{(item.descricao).substr(0, 70)}}</span><span *ngIf="item.descricao.length > 69">...</span>
+                </div>
+              </div>
+              <div *ngIf="item.oferta != 0; else nOferta">
+                <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+                  <div class="col-4  "><span style="font-size: 16px;">R$:</span>
+                    <span style="font-size: 17px; margin: 0px; padding: 0px;font-weight: 500;">{{item.oferta.replace(".",",")}}</span>
+                  </div>
+                  <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                    <span style="font-size: 14px; margin: 0px; padding: 0px; text-decoration: line-through;">{{item.valor.replace(".",",")}}</span>
+                  </div>
+      
+                  <div class="col-4 ">
+                    <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+                  </div>
+                </div>
+              </div>
+              <ng-template #nOferta>
+                <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+                  <div class="col-4  ">
+                    <span style="font-size: 18px; margin: 0px; padding: 0px;font-weight: 500;"></span>
+                  </div>
+                  <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                    <span style="font-size: 15px; margin: 0px; padding: 0px; text-decoration: line-through;"></span>
+                  </div>
+        
+                  <div class="col-4 ">
+                    <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+                  </div>
+                </div>
+              </ng-template>
+              </div>
+            </div>
+          </div><!-- Fim do corpo -->
+        </div>
+      
+      
+      </div><!-- diferente de lanche e porções-->
+        </div>
+  
+  
+  
+  
+      </div><!-- Inicio do *ngFor  Refrigerante -->
+    </div>
+
+
+<!-----------------------------------------------------Vitaminas------------------------------------------------>
+    <div *ngIf="pagina == 'Vitaminas'">
+      <div *ngFor="let item of itemCadastrados" class="bordalr"  ><!-- Inicio do *ngFor  Refrigerante -->
+      <div *ngIf="desliza == item.status">
+      <div *ngIf="item.modelo == pagina">
+
+        <div [@entrada]="stEstado">
+      <div class="d-flex bordamb shadow-sm">
+        <div class="p-0 m-0" [routerLink]="['/oferta', item.key]">
+          <div class="imagem " [style.background-image]="'url(' + item.url_imagem  + ')'" ></div>
+        </div>
+        <div class="m-0 w-100 "><!-- Inicio do corpo -->
+    
+          <div class="container p-0 pl-2 pt-1 m-0">
+            <div class="row no-gutters ">
+              <div class="col-9" [routerLink]="['/oferta', item.key]">
+               <strong  style="font-weight: 500; letter-spacing: 0.5px;">{{item.titulo}}</strong>
+              </div>
+              <div class="col-3 ">
+                <p class="p-0 m-0 pr-2 text-right"> <a >
+                  <div style="position: absolute; right:0; " class="pr-2" >
+                      <img src="../../assets/interface/carrinhoComprabb.svg" height="20px" >
+                  </div>
+                  <div *ngFor="let carrinhokey of itensCarrinho" style="position: absolute;right:0; " class="pr-2"  >
+                    <div *ngIf="item.key == carrinhokey.key" style="z-index: 5;"> 
+                      <img src="../../assets/interface/carrinhoCompracheio.svg" height="20px" >
+                    </div>
+                  </div>
+      
+                  </a></p>
+              </div>
+            </div>
+            <div class="row descricao p-0 m-0  pt-0" style="height: 36px;" [routerLink]="['/oferta', item.key]">
+              <div class="col p-0 m-0 ">
+                <p class="p-0 m-0  ">
+                  <span class="p-0 m-0" style="letter-spacing: 0.5px;"> {{(item.descricao).substr(0, 70)}}</span><span *ngIf="item.descricao.length > 69">...</span>
+              </div>
+            </div>
+            <div *ngIf="item.oferta != 0; else nOferta">
+              <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+                <div class="col-4  "><span style="font-size: 16px;">R$:</span>
+                  <span style="font-size: 17px; margin: 0px; padding: 0px;font-weight: 500;">{{item.oferta.replace(".",",")}}</span>
+                </div>
+                <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                  <span style="font-size: 14px; margin: 0px; padding: 0px; text-decoration: line-through;">{{item.valor.replace(".",",")}}</span>
+                </div>
+    
+                <div class="col-4 ">
+                  <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+                </div>
+              </div>
+            </div>
+            <ng-template #nOferta>
+              <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+                <div class="col-4  ">
+                  <span style="font-size: 18px; margin: 0px; padding: 0px;font-weight: 500;"></span>
+                </div>
+                <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                  <span style="font-size: 15px; margin: 0px; padding: 0px; text-decoration: line-through;"></span>
+                </div>
+      
+                <div class="col-4 ">
+                  <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+                </div>
+              </div>
+            </ng-template>
+            </div>
+          </div>
+        </div><!-- Fim do corpo -->
+      </div>
+    
+    
+    </div><!-- diferente de lanche e porções-->
+      </div>
+
+
+
+
+    </div><!-- Inicio do *ngFor  Refrigerante -->
+  </div>
+
+
+<!-----------------------------------------------------Sucos------------------------------------------------>
+  <div *ngIf="pagina == 'Sucos'">
+    <div *ngFor="let item of itemCadastrados" class="bordalr"  ><!-- Inicio do *ngFor  Refrigerante -->
+    <div *ngIf="desliza == item.status">
+    <div *ngIf="item.modelo == pagina">
+
+      <div [@entrada]="stEstado">
+    <div class="d-flex bordamb shadow-sm">
+      <div class="p-0 m-0" [routerLink]="['/oferta', item.key]">
+        <div class="imagem " [style.background-image]="'url(' + item.url_imagem  + ')'" ></div>
+      </div>
+      <div class="m-0 w-100 "><!-- Inicio do corpo -->
+  
+        <div class="container p-0 pl-2 pt-1 m-0">
+          <div class="row no-gutters ">
+            <div class="col-9" [routerLink]="['/oferta', item.key]">
+             <strong  style="font-weight: 500; letter-spacing: 0.5px;">{{item.titulo}}</strong>
+            </div>
+            <div class="col-3 ">
+              <p class="p-0 m-0 pr-2 text-right"> <a >
+                <div style="position: absolute; right:0; " class="pr-2" >
+                    <img src="../../assets/interface/carrinhoComprabb.svg" height="20px" >
+                </div>
+                <div *ngFor="let carrinhokey of itensCarrinho" style="position: absolute;right:0; " class="pr-2"  >
+                  <div *ngIf="item.key == carrinhokey.key" style="z-index: 5;"> 
+                    <img src="../../assets/interface/carrinhoCompracheio.svg" height="20px" >
+                  </div>
+                </div>
+    
+                </a></p>
+            </div>
+          </div>
+          <div class="row descricao p-0 m-0  pt-0" style="height: 36px;" [routerLink]="['/oferta', item.key]">
+            <div class="col p-0 m-0 ">
+              <p class="p-0 m-0  ">
+                <span class="p-0 m-0" style="letter-spacing: 0.5px;"> {{(item.descricao).substr(0, 70)}}</span><span *ngIf="item.descricao.length > 69">...</span>
+            </div>
+          </div>
+          <div *ngIf="item.oferta != 0; else nOferta">
+            <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+              <div class="col-4  "><span style="font-size: 16px;">R$:</span>
+                <span style="font-size: 17px; margin: 0px; padding: 0px;font-weight: 500;">{{item.oferta.replace(".",",")}}</span>
+              </div>
+              <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                <span style="font-size: 14px; margin: 0px; padding: 0px; text-decoration: line-through;">{{item.valor.replace(".",",")}}</span>
+              </div>
+  
+              <div class="col-4 ">
+                <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+              </div>
+            </div>
+          </div>
+          <ng-template #nOferta>
+            <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+              <div class="col-4  ">
+                <span style="font-size: 18px; margin: 0px; padding: 0px;font-weight: 500;"></span>
+              </div>
+              <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+                <span style="font-size: 15px; margin: 0px; padding: 0px; text-decoration: line-through;"></span>
+              </div>
+    
+              <div class="col-4 ">
+                <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+              </div>
+            </div>
+          </ng-template>
+          </div>
+        </div>
+      </div><!-- Fim do corpo -->
+    </div>
+  
+  
+  </div><!-- diferente de lanche e porções-->
+    </div>
+
+
+
+
+  </div><!-- Inicio do *ngFor  Refrigerante -->
+</div>
+      
+<!-----------------------------------------------------Cerveja------------------------------------------------>
+<div *ngIf="pagina == 'Cerveja'">
+  <div *ngFor="let item of itemCadastrados" class="bordalr"  ><!-- Inicio do *ngFor  Refrigerante -->
+  <div *ngIf="desliza == item.status">
+  <div *ngIf="item.modelo == pagina">
+
+    <div [@entrada]="stEstado">
+  <div class="d-flex bordamb shadow-sm">
+    <div class="p-0 m-0" [routerLink]="['/oferta', item.key]">
+      <div class="imagem " [style.background-image]="'url(' + item.url_imagem  + ')'" ></div>
+    </div>
+    <div class="m-0 w-100 "><!-- Inicio do corpo -->
+
+      <div class="container p-0 pl-2 pt-1 m-0">
+        <div class="row no-gutters ">
+          <div class="col-9" [routerLink]="['/oferta', item.key]">
+           <strong  style="font-weight: 500; letter-spacing: 0.5px;">{{item.titulo}}</strong>
+          </div>
+          <div class="col-3 ">
+            <p class="p-0 m-0 pr-2 text-right"> <a >
+              <div style="position: absolute; right:0; " class="pr-2" >
+                  <img src="../../assets/interface/carrinhoComprabb.svg" height="20px" >
+              </div>
+              <div *ngFor="let carrinhokey of itensCarrinho" style="position: absolute;right:0; " class="pr-2"  >
+                <div *ngIf="item.key == carrinhokey.key" style="z-index: 5;"> 
+                  <img src="../../assets/interface/carrinhoCompracheio.svg" height="20px" >
+                </div>
+              </div>
+  
+              </a></p>
+          </div>
+        </div>
+        <div class="row descricao p-0 m-0  pt-0" style="height: 36px;" [routerLink]="['/oferta', item.key]">
+          <div class="col p-0 m-0 ">
+            <p class="p-0 m-0  ">
+              <span class="p-0 m-0" style="letter-spacing: 0.5px;"> {{(item.descricao).substr(0, 70)}}</span><span *ngIf="item.descricao.length > 69">...</span>
+          </div>
+        </div>
+        <div *ngIf="item.oferta != 0; else nOferta">
+          <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+            <div class="col-4  "><span style="font-size: 16px;">R$:</span>
+              <span style="font-size: 17px; margin: 0px; padding: 0px;font-weight: 500;">{{item.oferta.replace(".",",")}}</span>
+            </div>
+            <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+              <span style="font-size: 14px; margin: 0px; padding: 0px; text-decoration: line-through;">{{item.valor.replace(".",",")}}</span>
+            </div>
+
+            <div class="col-4 ">
+              <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+            </div>
+          </div>
+        </div>
+        <ng-template #nOferta>
+          <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+            <div class="col-4  ">
+              <span style="font-size: 18px; margin: 0px; padding: 0px;font-weight: 500;"></span>
+            </div>
+            <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+              <span style="font-size: 15px; margin: 0px; padding: 0px; text-decoration: line-through;"></span>
+            </div>
+  
+            <div class="col-4 ">
+              <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+            </div>
+          </div>
+        </ng-template>
+        </div>
+      </div>
+    </div><!-- Fim do corpo -->
+  </div>
+
+
+</div><!-- diferente de lanche e porções-->
+  </div>
+
+
+
+
+</div><!-- Inicio do *ngFor  Refrigerante -->
+</div>
+
+
+<!-----------------------------------------------------Refrigerante------------------------------------------------>
+<div *ngIf="pagina == 'Outros'">
+  <div *ngFor="let item of itemCadastrados" class="bordalr"  ><!-- Inicio do *ngFor  Refrigerante -->
+  <div *ngIf="desliza == item.status">
+  <div *ngIf="item.modelo == pagina">
+
+    <div [@entrada]="stEstado">
+  <div class="d-flex bordamb shadow-sm">
+    <div class="p-0 m-0" [routerLink]="['/oferta', item.key]">
+      <div class="imagem " [style.background-image]="'url(' + item.url_imagem  + ')'" ></div>
+    </div>
+    <div class="m-0 w-100 "><!-- Inicio do corpo -->
+
+      <div class="container p-0 pl-2 pt-1 m-0">
+        <div class="row no-gutters ">
+          <div class="col-9" [routerLink]="['/oferta', item.key]">
+           <strong  style="font-weight: 500; letter-spacing: 0.5px;">{{item.titulo}}</strong>
+          </div>
+          <div class="col-3 ">
+            <p class="p-0 m-0 pr-2 text-right"> <a >
+              <div style="position: absolute; right:0; " class="pr-2" >
+                  <img src="../../assets/interface/carrinhoComprabb.svg" height="20px" >
+              </div>
+              <div *ngFor="let carrinhokey of itensCarrinho" style="position: absolute;right:0; " class="pr-2"  >
+                <div *ngIf="item.key == carrinhokey.key" style="z-index: 5;"> 
+                  <img src="../../assets/interface/carrinhoCompracheio.svg" height="20px" >
+                </div>
+              </div>
+  
+              </a></p>
+          </div>
+        </div>
+        <div class="row descricao p-0 m-0  pt-0" style="height: 36px;" [routerLink]="['/oferta', item.key]">
+          <div class="col p-0 m-0 ">
+            <p class="p-0 m-0  ">
+              <span class="p-0 m-0" style="letter-spacing: 0.5px;"> {{(item.descricao).substr(0, 70)}}</span><span *ngIf="item.descricao.length > 69">...</span>
+          </div>
+        </div>
+        <div *ngIf="item.oferta != 0; else nOferta">
+          <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+            <div class="col-4  "><span style="font-size: 16px;">R$:</span>
+              <span style="font-size: 17px; margin: 0px; padding: 0px;font-weight: 500;">{{item.oferta.replace(".",",")}}</span>
+            </div>
+            <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+              <span style="font-size: 14px; margin: 0px; padding: 0px; text-decoration: line-through;">{{item.valor.replace(".",",")}}</span>
+            </div>
+
+            <div class="col-4 ">
+              <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+            </div>
+          </div>
+        </div>
+        <ng-template #nOferta>
+          <div class="row no-gutters " [routerLink]="['/oferta', item.key]">
+            <div class="col-4  ">
+              <span style="font-size: 18px; margin: 0px; padding: 0px;font-weight: 500;"></span>
+            </div>
+            <div class="col-4 corpadrao " style="padding-top: 0.5px;">
+              <span style="font-size: 15px; margin: 0px; padding: 0px; text-decoration: line-through;"></span>
+            </div>
+  
+            <div class="col-4 ">
+              <p class="m-0 p-0 text-right pr-2 pb-1">  <span style="font-size: 11px; margin:0px; padding: 0px;" class="text-muted">{{item.modelo}}</span></p>
+            </div>
+          </div>
+        </ng-template>
+        </div>
+      </div>
+    </div><!-- Fim do corpo -->
+  </div>
+
+
+</div><!-- diferente de lanche e porções-->
+  </div>
+
+
+
+
+</div><!-- Inicio do *ngFor  Refrigerante -->
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+        
+
+
+
+
+
+    <nav class="navbar fixed-bottom  m-0 menuBebidas  " >
+      
+      <ul class="marcadores bg-light">
+        <li >
+          <a (click)="mostraBebidas('Refrigerante')">Refrigerante</a>
+
+        </li>
+        <li>
+          <a (click)="mostraBebidas('Vitaminas')">Vitaminas</a>  
+        </li>
+        <li>
+          <a (click)="mostraBebidas('Sucos')">Sucos</a>
+        </li>
+        <li>
+          <a (click)="mostraBebidas('Cerveja')">Cerveja</a>
+        </li>
+        <li>
+          <a (click)="mostraBebidas('Outros')">Outros</a>
+        </li>
+      </ul>
+         
+    </nav>  
+    
+    
+  
+
+
+ </div>
+ 
+</div>
+
+
+
+ <div class="container" *ngIf="stPedido == 'criado'" >
+  <nav class="navbar fixed-bottom  m-0 mr-1 ml-1 p-0  pb-5" >
+    <div class="mb-5 pt-2  bg-success botao text-white  btn-block" style="position: absolute; height: 32px; width: 100%;" [@pedido]="stPedido">
+   <p class="text-center text-light botao">Pedido adicionado!<p>
+      </div>
+  </nav>  
+</div><!-- fim do container -->

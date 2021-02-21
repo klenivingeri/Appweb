@@ -1,0 +1,101 @@
+.imagem{
+    border-radius: 10px;
+    height: 80px;
+    width: 80px;
+    background-image: url('../../assets/img/unnamed.jpg'); 
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.ticket{
+    
+    margin: -1px 17px -1px 17px ;
+    background-color: #FFF;
+    background: url('../../assets/interface/rebarbatr.svg') no-repeat top right,
+                url('../../assets/interface/rebarbatl.svg') no-repeat top left,
+                url('../../assets/interface/rebarbabr.svg') no-repeat bottom right,
+                url('../../assets/interface/rebarbabl.svg') no-repeat bottom left,
+                url('../../assets/interface/linhat.svg') repeat-x top ,
+                url('../../assets/interface/linhar.svg') repeat-y right,
+                url('../../assets/interface/linhab.svg') repeat-x bottom,
+                url('../../assets/interface/linhal.svg') repeat-y left;
+    background-size: 10px;}
+.corpadrao{
+    color: rgb(130, 130, 130);
+ }
+ div.descricao{
+    color:rgb(160, 160, 160);
+    font:11px Arial, Sans-serif;
+    line-height:1.5;
+    vertical-align: middle;
+    display: table-cell;
+
+}
+.botao{
+    letter-spacing: 1px;
+    font-weight: 500;
+
+}
+
+.sombrabot{
+    -webkit-box-shadow: 0 4px 6px -6px #222;
+    -moz-box-shadow: 0 4px 6px -6px #222;
+    box-shadow: 0 4px 6px -6px #222;
+}
+
+
+.etiqueta{
+    background-color: white;
+    border-radius: 100%;
+    position: absolute;
+    top: 0px;
+    left:13px;
+    height: 15px;
+    width:15px;
+    font-size: 10px;
+    color: black;
+}
+.etiquetap{
+
+        background-color: black;
+        border-radius: 100%;
+        position: absolute;
+        top: 0px;
+        left:13px;
+        height: 15px;
+        width:15px;
+        font-size: 10px;
+        color: white;
+        padding: 0.2px 0px 0px 4.5px;
+}
+
+input{
+    
+    border: 0px;
+    background-color: white;
+    color: black;
+    height: 40px;
+}
+
+input:focus{
+    border: 0px;
+    background-color:white;
+    color: black;
+    height: 40px;
+}
+
+select{
+    border:0px;
+    background-color:white;
+    color: black;
+    height: 40px;
+}
+
+
+::placeholder {
+    color:#343a40;
+ 
+    
+  }

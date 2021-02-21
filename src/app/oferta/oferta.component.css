@@ -1,0 +1,106 @@
+|div{
+    font:11.5px Arial, Sans-serif;
+    overflow-x: 0;
+    }
+.capa{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 325px;
+    
+    margin: 0px;
+    padding: 0px;
+    }
+.quadro{
+
+    margin: 0px 0px 100px 0px;
+    }
+.titulo{
+    margin: 15px 0px 15px 0px;
+    padding: 0px 0px 0px 0px;
+    font-weight: 500; letter-spacing: 0.5px;
+    
+    }
+.descricao{
+    margin: 10px 0px 10px 0px;
+    padding: 0px 0px 0px 0px;
+    color:rgb(140, 140, 140);
+    font:13px Arial, Sans-serif;
+    line-height:1.5;
+    min-height: 10em;
+    vertical-align: middle;
+    display: table-cell;
+    }
+
+.botao{
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: white;
+
+    
+}
+
+
+.botaoo{
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: white;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.adicionado{
+    position: absolute;
+    z-index:2; 
+    margin: outo 0; 
+    height: 50px; 
+    width: 100%;
+    text-align: center;
+     
+}

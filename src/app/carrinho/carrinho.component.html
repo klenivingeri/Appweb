@@ -1,0 +1,332 @@
+<div class="container pt-2 mb-5 pb-5 m-0 p-0">
+  <div *ngIf="pagCarrinho; else pagForm">
+<div class="row no-gutters m-1 p-1 pl-3">
+  <div class="col-2"><img src="../../assets/interface/carrinhoComprab.svg" height="33"></div>
+  <div class="col-10 pt-1 h4 " style="letter-spacing: 1px;" >Finalizar pedido</div>
+</div>
+<div *ngFor="let itens of itensCarrinho"  [@inicio]="stInicio" ><!-- Inicio do *ngFor -->
+  <div class="ticket">
+    
+    <div class="d-flex ml-3 mr-3 ">
+    <div class="p-0  pt-3">
+      <div class="imagem "  [style.background-image]="'url(' + itens.url_imagem  + ')'"></div>
+    </div>
+    <div class="m-0 w-100  "><!-- Inicio do corpo -->
+
+      <div class="container p-0 pl-1 m-0">
+        <div class="row no-gutters">
+          <div class="col-12 m-0 p-0 mb-0 mt-3">
+           <strong class="h5">{{itens.titulo}}</strong>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-12  m-0 p-0 mb-1  ">
+            <div class="descricao pl-1 pb-2">
+              <span class="p-0 m-0" style="letter-spacing: 0.5px;"> {{(itens.descricao).substr(0, 120)}}</span><span *ngIf="itens.descricao.length > 119">...</span>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div><!-- Fim do corpo -->
+  </div>
+    <div class="card-body  pl-3 pr-3 pt-0 pb-0 ">
+      <div *ngFor="let add of itens.adicionais" class="row m-0 p-0 no-gutters ">
+        <div class="col-5 pl-3" style="letter-spacing: 0.5px;">{{add.titulo}}</div>
+        <div class="col-2 pl-3" style="letter-spacing: 0.5px;">{{(add.valor).replace(".",",")}}</div>
+        <div class="col-2 text-center p-0" >
+          <div *ngIf="add.quantidade == 0;else quant"></div>
+          <ng-template #quant >
+            <i (click)="menosAdicionais(add, itens)" class="fa fa-minus shadow-sm" style="background-color:rgba(235, 235, 235, 0.5);padding: 4px 6px 4px 6px; border-radius: 5px; border: rgb(201, 201, 201) 1px solid;"></i>
+          </ng-template>
+        </div>
+        <div class="col-1 text-center mb-2 p-0">
+          <div *ngIf="add.titulo != ''" >
+          <div *ngIf="add.quantidade == 0;else quante" > <span class="h5 text-white" >.</span></div>
+          <ng-template #quante>
+            <span class="h5" >{{add.quantidade}}</span>
+          </ng-template>
+        </div>
+          </div>
+          <div class="col-2 text-center  p-0" >
+            <div *ngIf="add.titulo != ''" >
+              <i (click)="maisAdicionais(add,itens)" class="fa fa-plus shadow-sm  " style="background-color:rgba(235, 235, 235, 0.5);padding: 5px 7px 5px 7px;border-radius: 5px; border: rgb(201, 201, 201) 1px solid;"></i>
+
+            </div>
+            </div>
+    </div>
+
+    <div class="card-body pt-0 pb-3 "><!-- Inicio do total -->
+      <hr class="mt-2 mb-0 p-0">
+      <div class="row m-0 no-gutters  ">
+        <div class="col-2 text-center pt-3 p-0 "(click)="menosLanche(itens)"><i  class="fa fa-minus shadow-sm" style="background-color:rgba(235, 235, 235, 0.5);padding: 5px 7px 5px 7px; border-radius: 5px; border: rgb(201, 201, 201) 1px solid;"></i></div>
+        <div class="col-1 text-center pt-3 p-0"><span class="h4">{{itens.quantidade}}</span></div>
+        <div class="col-2 text-center pt-3 p-0" (click)="maisLanche(itens)"><i  class="fa fa-plus shadow-sm  " style="background-color:rgba(235, 235, 235, 0.5);padding: 5px 7px 5px 7px;border-radius: 5px; border: rgb(201, 201, 201) 1px solid;"></i></div>
+        <div class="col-7 pl-2 pt-2 "><p class="p-0 m-0 text-right"><span class="h2 p-0 m-0">R$:{{(itens.oferta).toFixed(2).replace(".",",")}} </span></p></div>
+      </div>
+
+    </div><!-- Fim do total -->
+    
+</div>
+</div><!-- Fim do *ngFor -->
+</div>
+<div  class="sombrabot" style="position: relative; margin: 0 auto; margin-top: -23px; width: 80%;"><span class="text-light">.</span></div>
+
+
+<nav class="navbar fixed-bottom  m-0 p-0  pb-5" [@menu]="stMenu">
+  <div class="row no-gutters" style="width:100%">
+    <div class="col-12  pl-1 pr-1" >
+      <button class="btn  btn-sm botao corpadrao bg-dark text-white btn-block mb-2 shadow " [@luzbotao]="luzbtn" style="padding-top: 2px;" (click)="trocaPag()" >
+        <div class="row mt-1 no-gutters">
+          <div class="col-4">
+            <p class="p-0   text-left" style="margin:0px  0px 3px 0px"><img src="../../assets/interface/carrinhoComprabbv.svg" height="22"></p>
+            <span class="etiqueta">{{contaItem}}</span>
+          </div> 
+          <div class="col-4" style="padding-top: 2px;">Continuar <img src="../../assets/interface/front.svg" height="14" > </div>
+          <div class="col-4"><p class="p-0 m-0 text-right" style="font-size: 16px;">R$: {{(somaItensCarrinho).toFixed(2).replace(".",",")}}</p></div>
+        </div>
+
+      
+
+      </button>
+    </div>
+  </div>  
+</nav>  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-template #pagForm  >
+  <div class="ml-2 mr-2" >
+  <div class="row no-gutters m-1 p-1 pl-3">
+    <div class="col-2"><img src="../../assets/interface/carrinhoComprab.svg" height="33"></div>
+    <div class="col-10 pt-1 h4 " style="letter-spacing: 1px;" >Dados de Entrega</div>
+  </div>
+
+
+  <form [formGroup]="formulario" novalidate (ngSubmit)="confirmarCompra()" >
+    <div class="form-row">
+
+      <div class="form-group col-12 ">
+        
+        
+        <input 
+          type="text" 
+          class="form-control  {{formulario.value.nome == null && formulario.get('nome').touched  == false ? '' : (formulario.get('nome').valid ? 'is-valid' : 'is-invalid')}}"
+          placeholder="Nome" 
+          autocomplete="off" 
+          formControlName="nome">
+          <hr class="m-0 mb-2 bg-dark">
+          
+      </div>
+      <div class="form-group col-12 mb-0">
+       
+        <select formControlName="modalidade"
+          class="form-control form-control {{formulario.value.modalidade == null  && formulario.get('modalidade').touched  == false ? '' : (formulario.get('modalidade').valid ? 'is-valid' : 'is-invalid')}}"
+           value="Modalidade de entrega...">
+          <option [ngValue]="null">Selecione a Modalidade de entrega...</option>
+          <option value="Retirar pedido no local">Retirar pedido no local</option>
+          <option value="Entregar pedido">Entregar pedido</option>
+        </select>
+        <hr class="m-0 mb-2 bg-dark">
+  
+    </div>
+
+
+                                        <!--   RETIRAR NO LOCAL -->
+
+    <div *ngIf="formulario.get('modalidade').valid && formulario.value.modalidade == 'Retirar pedido no local'  " class="form-text text-success form-group col-12 mb-" >
+        <div >
+        <select  
+          class="form-control {{formulario.value.retirada == null  && formulario.get('retirada').touched  == false ? '' : (formulario.get('retirada').valid ? 'is-valid' : 'is-invalid')}}"
+          formControlName="retirada">
+          <option [ngValue]="null">Selecione a Unidade de retirada...</option>
+          <option value="Rua:  Manoel Francisco Mello 469, vila São Sebastião">
+            Rua:  Manoel Francisco Mello 469, vila São Sebastião
+          </option>
+          <option value="Rua: São Paulo 1306, vila Aparecida">
+            Rua: São Paulo 1306, vila Aparecida
+          </option>
+        </select>
+        <hr class="m-0 mb-2 bg-dark">
+      </div>
+ 
+
+
+
+    </div>
+
+
+    
+
+
+
+
+
+
+                                        <!--   FAZER A ENTREGA DO PEDIDO -->
+
+    <div *ngIf="formulario.get('modalidade').valid && formulario.value.modalidade == 'Entregar pedido'" class="form-text text-success">
+      
+      <div class="row no-gutter m-0 p-0 p-1">
+        <div class="form-group col-4 m-0 mb-0 p-0">
+          <div class=" pr-1 p-0 m-0">
+          <input type="text" 
+            class="form-control {{formulario.value.cep == null  && formulario.get('cep').touched  == false ? '' : (formulario.get('cep').valid ? 'is-valid' : 'is-invalid')}}" 
+            placeholder="Cep:" 
+            autocomplete="off"
+            formControlName="cep" 
+            #cep
+            (change)="getDadosEnderecoPorCEP(cep.value)"
+            >
+            <hr class="m-0 bg-dark">
+          </div>
+        </div>
+        <div class="form-group col-8 m-0 mb-0 p-0">
+          <div class="  p-0 pl-2 m-0">
+          <input type="text" 
+            class="form-control {{formulario.value.rua == null  && formulario.get('rua').touched  == false ? '' : (formulario.get('rua').valid ? 'is-valid' : 'is-invalid')}}" 
+            placeholder="Rua:" 
+            autocomplete="off"
+            formControlName="rua"
+            value="{{dadosJSONObj.logradouro}}">
+            <hr class="m-0 bg-dark">
+          </div>
+        </div>
+      </div>
+
+      <div class="row no-gutter m-0 p-0 p-1">
+        <div class="form-group col-6 p-0 mb-1 m-0">
+          <div class="p-0 m-0">
+          <input type="text" 
+            class="form-control  {{formulario.value.bairro == null  && formulario.get('bairro').touched  == false ? '' : (formulario.get('bairro').valid ? 'is-valid' : 'is-invalid')}}" 
+            placeholder="Bairro:" 
+            autocomplete="off"
+            formControlName="bairro"
+            value="{{dadosJSONObj.bairro}}">
+            <hr class="m-0 bg-dark">
+          </div>
+        </div>
+  
+        <div class="form-group col-3 mb-1 p-0 m-0">
+          <div class=" p-0 pl-1 pl-2 m-0">
+          <input type="text" 
+            class="form-control  {{formulario.value.numero == null  && formulario.get('numero').touched  == false ? '' : (formulario.get('numero').valid ? 'is-valid' : 'is-invalid')}}" 
+            placeholder="Número" 
+            autocomplete="off"
+            formControlName="numero">
+            <hr class="m-0 bg-dark">
+        </div>
+      </div>
+       
+        <div class="form-group col-3 mb-1 p-0 m-0">
+          <div class=" p-0 pl-2 m-0">
+          <input type="text" 
+            class="form-control {{formulario.value.complemento == null  && formulario.get('complemento').touched  == false ? '' : (formulario.get('complemento').valid ? 'is-valid' : 'is-invalid')}}" 
+            placeholder="Complemento" 
+            autocomplete="off"
+            formControlName="complemento">
+            <hr class="m-0 bg-dark">
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+
+    
+
+    
+
+    </div>
+    <br />
+                                  <!--  FORMA DE PAGAMENTO  -->
+    <h5>Dados de pagamento</h5>
+    <hr />
+      <div class="form-group col-12 pl-0 pr-0 pt-0 mt-0">
+        <div class=" m-0">
+        <select 
+          class="form-control {{formulario.value.formaPagamento == null  && formulario.get('formaPagamento').touched  == false ? '' : (formulario.get('formaPagamento').valid ? 'is-valid' : 'is-invalid')}}"
+          formControlName="formaPagamento">
+          <option [ngValue]="null">Selecione a forma de Pagamento...</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="Cartão">Cartão</option>
+        </select>
+        <hr class="m-0 bg-dark">
+      </div>
+    </div>
+
+    <div *ngIf="formulario.get('formaPagamento').valid && formulario.value.formaPagamento == 'Dinheiro' && formulario.value.modalidade =='Entregar pedido'" class="form-text text-success">
+      <div class="row pl-1 pr-1 pt-0 mt-0">       
+        <div class="form-group col-8  pt-0 mt-0">
+          <div class=" m-0">
+          <select 
+            class="form-control {{formulario.value.trocoSN == null  && formulario.get('trocoSN').touched  == false ? '' : (formulario.get('trocoSN').valid ? 'is-valid' : 'is-invalid')}}"
+            formControlName="trocoSN">
+            <option [ngValue]="null">Vai precisar de troco?</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+          </select>
+          <hr class="m-0 bg-dark">
+          </div>
+        </div>
+      
+          <div class="form-group col-4 mb-1 m-0" *ngIf="formulario.value.trocoSN == null || formulario.value.trocoSN =='nao'">
+            <div class="input-group input-group m-0">
+              <input disabled type="text" 
+              class="form-control" 
+              placeholder="R$: 0,00" 
+              autocomplete="off"
+              formControlName="trocoSN" >
+            </div>
+          </div>
+
+          <div class="form-group col-4 mb-1 m-0" *ngIf="formulario.value.trocoSN =='sim'">
+            <div class=" m-0">
+              <input  type="text" 
+              class="form-control {{formulario.value.troco == null  && formulario.get('troco').touched  == false ? '' : (formulario.get('troco').valid ? 'is-valid' : 'is-valid')}}" 
+              placeholder="R$: 0,00" 
+              autocomplete="off"
+              formControlName="troco" >
+              <hr class="m-0 bg-dark">
+            </div>
+          </div>
+
+      </div>
+    </div>
+ 
+
+    <div class="modal-footer">
+      <div style="position: relative;">
+        <p class="p-0 text-black  text-left" style="margin:0px  0px 3px 0px"><img src="../../assets/interface/carrinhoComprab.svg" height="22"></p>
+        <span class="etiquetap">{{contaItem}}</span>
+      </div>
+      <h5 class="h4 " *ngIf="formulario.value.modalidade != 'Entregar pedido'"> R$: {{(somaItensCarrinho).toFixed(2).replace(".",",")}}</h5>
+        <h5 class="h4 " *ngIf="formulario.value.modalidade == 'Entregar pedido'"> R$: {{ (somaItensCarrinho + 10.00).toFixed(2).replace(".",",")}}</h5>
+    </div>
+    <button type="submit" class="badge btn btn-success botao text-white btn-lg btn-block" style="padding:15px 0px 15px 0px;">Finalizar <i class="fa fa-1x fa-arrow-right"></i></button>
+    <span class="badge badge-light align-text d-flex justify-content-center"  >O pedido será redirecionado para o WhatsApp</span> 
+  </form>
+
+
+
+
+</div>
+</ng-template>
+
+
+
+
+
+
+

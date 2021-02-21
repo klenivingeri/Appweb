@@ -1,0 +1,13 @@
+.botao{
+    width: 19%;
+    padding: 0px 0px 0px 0px ;
+    margin: 0px 0.5% 0px 0.5%;
+  }
+  .menu{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    color: rgb(100, 100, 100);
+  }
+  .botaomt{
+      margin: -3px 0px 0px 0px;
+  }

@@ -1,0 +1,30 @@
+
+<nav class="nav navbar-light bg-white shadow shadow-sm" [@banner]="estado" >
+  <div class="container-fluid p-0 m-0">
+    <div *ngIf="ctrlBotao; else ctrlBotaofalse">
+    <div class="row no-gutters bg-white" [@conteudo]="stConteudo">
+      <div class="col-5 pl-2 align-self-center" >
+        <img src="../../assets/interface/logo.png " [@conteudo]="stConteudo"  [routerLink]="['/acesso']" height="38" class="m-1">
+        </div>
+      <div class="col-5  align-self-center"  > 
+        <p class="p-0 m-0 text-right" [@conteudo]="stConteudo"><strong>Finalizar Pedido </strong></p>
+        </div>
+      <div class="col-2 align-self-center"  >
+        <p class="p-0 m-0 text-center" [routerLink]="['/carrinho']" [@conteudo]="stConteudo"><img src="../../assets/interface/carrinhoComprab.svg" height="30"></p>
+        </div>
+    </div>
+    </div>
+  </div>
+ </nav>
+ 
+
+
+<!-- Mine botão com seta pra cima e para baixo-->
+<div  [@botao]="stBotao"  class="botao shadow-sm shadow" (click)="toggleButton()">
+  <div *ngIf="ctrlBotao; else ctrlBotaofalse">
+    <p class="text-center m-0 p-0" ><strong><i class="fa fa-angle-up p-0 m-0"></i></strong></p>
+  </div>
+  <ng-template #ctrlBotaofalse>
+    <p class="text-center m-0 p-0" ><i class="fa fa-angle-down p-0 m-0"></i></p>
+  </ng-template>
+</div>

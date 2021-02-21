@@ -1,0 +1,111 @@
+.borda-lr{
+    padding: 0px 18px 0px 18px ;
+    
+}
+.bordamb{
+    border: 0.5px solid rgb(241, 241, 241);
+    border-radius: 5px;
+    margin: 0px 15px 16px 15px ;
+    background-color: #FFF;
+    
+}
+
+.imagem{
+    border-radius: 5px 0px 0px 5px;
+    height: 92px;
+    width: 92px;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+div.descricao{
+    color:rgb(160, 160, 160);
+    font:11.5px Arial, Sans-serif;
+    line-height:1.5;
+    min-height: 10em;
+    vertical-align: middle;
+    display: table-cell;
+
+}
+.corpadrao{
+   color: rgb(130, 130, 130);
+   
+}
+
+div.desliza{
+    position:relative
+ }
+
+.fundo{
+    position: absolute;
+    background-attachment: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    
+}
+
+/*---------------------------Controlabotão ----------------------------- */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 20px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

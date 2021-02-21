@@ -1,0 +1,55 @@
+.formulario{
+    border: 0.5px solid rgba(150, 0.3);
+
+    border-radius: 5px ;
+    height: 400px;
+    padding-top: 50px;
+}
+input{
+    border:0px;
+    background-color:white;
+    color: black;
+    padding-left: 50px ;
+    height: 50px;
+}
+input:focus{
+    
+    background-color:white;
+    color: black;
+    height: 50px;
+    
+}
+.botao{
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: white;
+    height: 50px;
+    
+}
+.titulo{
+    letter-spacing: 1px;
+    font-weight: 500;
+    
+    height: 50px;
+    
+}
+::placeholder {
+    color:#343a40;
+    font-style: italic;
+    
+  }
+
+
+  input[type=email]{
+
+    background-image: url(../../../assets/interface/loginUsusario.svg) ;
+    background-repeat: no-repeat;
+
+  }
+
+  input[type=password]{
+
+    background-image: url(../../../assets/interface/loginSenha.svg) ;
+    background-repeat: no-repeat;
+
+  }

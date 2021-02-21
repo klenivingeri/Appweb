@@ -1,0 +1,168 @@
+
+<div *ngIf="oferta !== undefined">
+
+ 
+  <div class="capa shadow" [@capa]="stCapa"  [style.background-image]="'url(' + oferta.url_imagem  + ')'" ></div>
+<div class="container-fluid ">
+<div class="quadro" >
+
+  <div class="row" [@capa]="stCapa">
+    <div class="col-12" [@inicio]="stInicio">
+      <h3 class="titulo">{{oferta.titulo}}</h3>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-12" [@inicio]="stInicio">
+      <p class="descricao" >{{oferta.descricao}}
+     </p>
+
+    </div>
+    <div class="w-100 "></div>
+    <div class="col-12" [@inicio]="stInicio">
+      <div *ngIf="oferta.valor != 0;else ofertavalor">
+    <div class="row m-0 mt-3 ">
+      <div class="col-2 text-center mt-1 p-0 pt-2" (click)="menosLanche()"><i   class="fa fa-minus shadow-sm" style="background-color:rgba(235, 235, 235, 0.5);padding: 5px 7px 5px 7px; border-radius: 5px; border: rgb(201, 201, 201) 1px solid;"></i></div>
+      <div class="col-1 text-center h5 mt-1 p-0 pt-2 "><span class="h5"> {{oferta.quantidade }} </span></div>
+      <div class="col-2 text-center mt-1 p-0 pt-2" (click)="maisLanche()"><i   class="fa fa-plus shadow-sm  " style="background-color:rgba(235, 235, 235, 0.5);padding: 5px 7px 5px 7px;border-radius: 5px; border: rgb(201, 201, 201) 1px solid;"></i></div>
+      <div class="col-7  m-0 p-0" ><p class=" m-0 pl-3 p-0 text-dark text-center" ><span class="h1"><span class="h5">R$:</span> {{(valorOfertaAdd).toFixed(2).replace(".",",")}}</span></p><hr class="mt-1 m-0  " /></div>
+    </div>
+
+  </div>
+  <ng-template #ofertavalor >
+    <div class="row m-0 mt-3 ">
+      <div class="col-2 text-center mt-1 p-0 pt-2" ></div>
+      <div class="col-1 text-center h5 mt-1 p-0 pt-2 "></div>
+      <div class="col-2 text-center mt-1 p-0 pt-2"></div>
+      <div class="col-7  m-0 p-0" ><p class=" m-0 pl-3 p-0 text-dark text-center" ><span class="h1"><span class="h5">R$:</span> {{(valorOfertaAdd).toFixed(2).replace(".",",")}}</span></p><hr class="mt-1 m-0  " /></div>
+    </div>
+  </ng-template>
+
+
+
+
+    </div>
+    <div class="w-100 mb-3"></div>
+    <div class="col-12" [@inicio]="stInicio" style="font: Arial, Sans-serif;">
+
+      <div *ngIf="oferta.adicionais.length != 1; ofertaadicionais ">
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+              <div class="btn btn-sm btn-secondery btn-block text-left">
+                Adicionais:
+              </div>
+
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <div *ngFor="let add of oferta.adicionais" class="row m-0  no-gutters ">
+                <div class="col-5 mb-4 ">{{add.titulo}}</div>
+                <div class="col-2 ">{{(add.valor).replace(".",",")}}</div>
+                <div class="col-2 text-center  p-0 " (click)="menosAdicionais(add)">
+                  <div *ngIf="add.quantidade == 0;else quant"></div>
+                 <ng-template #quant >
+                 <i  class="fa fa-minus shadow-sm" style="background-color:rgba(235, 235, 235, 0.5);padding: 5px 7px 5px 7px; border-radius: 5px; border: rgb(201, 201, 201) 1px solid;"></i>
+                 </ng-template>     
+            </div>
+                <div class="col-1 text-center h5 mt-0 p-0  ">
+                  <div *ngIf="add.titulo != ''" >
+                  <div *ngIf="add.quantidade == 0;else quante" > <span class="h5 text-white" >.</span></div>
+                  <ng-template #quante>
+                    <span class="h5" >{{add.quantidade}}</span>
+                  </ng-template>
+                  </div>
+                </div>
+                <div class="col-2 text-center  p-0" >
+                  <div *ngIf="add.titulo != ''" >
+                    <i (click)="maisAdicionais(add)" class="fa fa-plus shadow-sm  " style="background-color:rgba(235, 235, 235, 0.5);padding: 5px 7px 5px 7px;border-radius: 5px; border: rgb(201, 201, 201) 1px solid;"></i>
+
+                  </div>
+                  
+                </div>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <ng-template #ofertaadicionais>
+
+      </ng-template>
+
+
+    </div>
+  </div>
+
+</div>
+
+
+<div class="container " >
+  <nav class="navbar fixed-bottom  m-0 p-0  pb-5" [@menu]="stMenu">
+    <div class="row no-gutters" style="width:100%">
+
+      <div class="col-12 pl-1 pr-1 ">
+        <div *ngIf="adcNoCarrinho;else adicionado">
+        <button class="btn botao btn-sm bg-danger  btn-block mb-2 shadow " [@luzbotao]="luzbtn"  style="padding:5px 0px 5px 0px;" (click)="adicionarItemCarrinho(oferta.modelo)">
+          Adicionar pedido
+        </button>
+        </div>
+        <ng-template #adicionado>
+          
+          <button class="btn btn-sm botaoo btn-success btn-block mb-2 shadow " style="padding:5px 0px 5px 0px;" >
+            Pedido adicionado!
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </nav>  
+</div><!-- fim do container -->
+
+
+
+
+</div>
+
+</div>
+
+<!--
+<div class="container " >
+  <nav class="navbar fixed-bottom  m-0 p-0  pb-5" [@menu]="stMenu">
+    <div class="row no-gutters" style="width:100%">
+      <div class="col-2 pl-2 pr-1" >
+        <button class="btn  btn-sm botao bg-light btn-block mb-2 shadow " style="padding-top: 2px;" [routerLink]="['/home']" >
+          <img src="../../assets/interface/back.svg" height="15" >
+          </button>
+      </div>
+      <div class="col-8 pl-1 pr-1 ">
+        <div *ngIf="adcNoCarrinho;else adicionado">
+        <button class="btn botao  btn-sm bg-light  btn-block mb-2 shadow " (click)="adicionarItemCarrinho()">
+          Adicionar pedido
+        </button>
+        </div>
+        <ng-template #adicionado>
+          <div [@adicionado]="stBag" class="adicionado  btn-outline-success "> Pedido adicionado! </div>
+          <button class="btn btn-sm btn-outline-success bg-light btn-block mb-2 shadow " >
+            Pedido adicionado!
+          </button>
+        </ng-template>
+      </div>
+      <div class="col-2 pl-1 pr-2">
+        <div *ngIf="adcNoCarrinho;else btnloja" class="m-0 p-0">
+          <button class="btn  btn-sm botao bg-light btn-block mb-2 shadow " style="padding-top: 2px;" [routerLink]="['/carrinho']" >
+            <img src="../../assets/interface/carrinhoComprabb.svg" height="20" class="">
+          </button>
+          </div>
+          <ng-template #btnloja>
+            
+            <button class="btn  btn-sm btn-outline-primary bg-light btn-block mb-2 shadow " style="padding-top: 2px;" [routerLink]="['/carrinho']" >
+              <img [@animacao-bag]="stBag" src="../../assets/interface/carrinhoComprabb.svg" height="20" class="">
+            </button>
+          </ng-template>
+      </div>
+    </div>
+  </nav>  
+</div>
+
+
+-->
